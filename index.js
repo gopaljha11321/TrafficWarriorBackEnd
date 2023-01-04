@@ -7,7 +7,7 @@ var port = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
 app.use(core({
-    origin:"https://63ad485b00db1c6e4514adef--glittery-dango-a782d9.netlify.app",
+    origin:"*",
 }))
 
 require(`${__dirname}/server/app`)(app, router);
