@@ -14,8 +14,17 @@ exports.detail=(req,res)=>
     (async function getData()
     {
       let result = await collection.find({"_id":id}).toArray();
+      if(result.length>0)
+      {
       let {name,email,_id}=result[0];
       let data={name:name,email:email,id:id}
       res.send(data);
+      }
+      else{
+        error={
+          msg:"wrong id"
+        }
+        res.send(error);
+      }
     }())
 }
