@@ -22,13 +22,9 @@ exports.register=(req,res)=>
             res.send({res_code:0,err:"Email already in use"});
         }
         else{
-        result = await collection.find({ email:{$exists:true}}).toArray();
-        let num=(result.length)+1;
-        const insertResult = collection.insertOne({_id:num, name:name,email:email,password:password,status:false});
+        const insertResult = collection.insertOne({_id:email.split("@")[0], name:name,email:email,password:password,status:false});
         res.send({res_code:1,inf:"data added"});
-
         }
     }
     getCount();
-    
 }
