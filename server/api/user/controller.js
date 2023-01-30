@@ -11,7 +11,6 @@ const client= new mongo(url,(err)=>
 client.connect()
 const db = client.db(dbName);
 const collection =db.collection("user")
-let image_name=""
 exports.detail=(req,res)=>
 {
     let id=req.body.id;
