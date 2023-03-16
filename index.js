@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(async(req,res,next)=>
 {
  
-  const notSecureUrl=["/login","/register","/profile_image"]
+  const notSecureUrl=["/login","/register","/profile_image","/testing"]
   const original=req._parsedUrl.pathname;
   const auth=req.headers.key;
   let result = auth?await collection.find({ auth: auth }).toArray():[];
