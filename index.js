@@ -15,13 +15,12 @@ var app = express();
 const env=require("./server/config/env")
 var port = process.env.PORT || 3001;
 app.use(core({
-  origin:"*",
+  origin:["http://127.0.0.1:3000","https://glittery-dango-a782d9.netlify.app"],
 }))
 app.use(bodyParser.json());
 app.use(async(req,res,next)=>
 {
- 
-  const notSecureUrl=["/login","/register","/profile_image","/testing","/evaluate","/sample","/evalute"]
+  const notSecureUrl=["/login","/register","/profile_image","/testing"]
   const original=req._parsedUrl.pathname;
   const auth=req.headers.key;
   let result = auth?await collection.find({ auth: auth }).toArray():[];

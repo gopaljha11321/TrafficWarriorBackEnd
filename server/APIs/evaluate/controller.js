@@ -37,7 +37,7 @@ exports.sample = async(request, response) => {
     code:get_all.length+1
   }
   await collection.insertOne(data);
-  return response.status(200).send();
+  return response.status(200).send(data);
 };
 exports.evaluate = async(request, response) => {
   question_code=request.body.code;
