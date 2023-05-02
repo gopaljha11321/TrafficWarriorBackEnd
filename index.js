@@ -17,7 +17,10 @@ const env = require("./server/config/env");
 var port = process.env.PORT || 3001;
 app.use(
   core({
-    origin: "*",
+    origin: [
+      "https://glittery-dango-a782d9.netlify.app",
+      "http://localhost:3000",
+    ],
   })
 );
 app.use(bodyParser.json());
