@@ -63,14 +63,9 @@ exports.average = async (request, response) => {
 exports.evaluate = async (request, response) => {
   question_code = request.body.code;
   const data = await collection.findOne({ code: question_code });
-  let average_value;
+  let average_value = data.average;
   delete data.question;
   delete data._id;
-  await axios
-    .post("https://ai-answer-evaluation.onrender.com/average", data)
-    .then((res) => {
-      average_value = res.data;
-    });
   data.answer = request.body.answer;
   let user_score = 0;
   delete data.sample;
